@@ -23,11 +23,26 @@ A simple diagnostic tool to identify the cause of *Apex Legends* startup crashes
 - **Local Diagnosis**: Fully local. No internet connection is made, and no data is uploaded.
 
 ### How to Use
+
+#### Method 1: Using the Batch File (Standard)
 1. Download the latest release `.zip` file and **extract (unzip) it**.
 2. Right-click `ApexLaunchDebugger.bat` and select **"Run as Administrator"**.
-3. The tool will automatically search for Apex Legends and attempt to launch it. If it fails to find the game, launch it manually via Steam or EA App.
+3. The tool will attempt to launch Apex Legends automatically. If it fails to find the game, launch it manually via Steam or EA App.
 4. Keep the command prompt open until the game crashes or fails to start.
-5. After monitoring finishes (up to 60 seconds), a detailed report `Apex_Diagnostic_Report.txt` will be generated on your Desktop and automatically opened in Notepad.
+5. After monitoring finishes (up to 60 seconds), a detailed report `Apex_Diagnostic_Report.txt` will be generated.
+
+#### Method 2: Via PowerShell (Alternative - If Method 1 instantly closes)
+If the batch file instantly closes or is blocked by antivirus software:
+1. Open the extracted folder, right-click on an empty space, and select **"Open in Terminal"** (or "Open PowerShell window here").
+2. Copy and paste the following command into the terminal and press `Enter`:
+   ```powershell
+   Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PWD\ApexLaunchDebugger.ps1`"" -Verb RunAs
+   ```
+3. A new PowerShell window will open with Administrator privileges to start the diagnosis.
+
+#### Important Notes
+*   **Time Limit**: The tool monitors process launches for **60 seconds** after starting. Please launch *Apex Legends* immediately after starting the tool.
+*   If the game crashes at the logo screen or on the main menu, the tool will instantly capture the crash details and generate the report.
 
 ---
 
@@ -48,11 +63,25 @@ A simple diagnostic tool to identify the cause of *Apex Legends* startup crashes
 - **セキュリティ・プライバシー**: すべての処理はご自身のPC内で完結します。外部との通信やデータのアップロードは一切行いません。
 
 ### 使い方
+
+#### 方法1: バッチファイルを使用する (標準)
 1. 最新のリリースZIPファイルをダウンロードし、**必ず解凍（すべて展開）**してください。
 2. 展開したフォルダ内にある `ApexLaunchDebugger.bat` を**右クリック**し、**「管理者として実行」**を選択します。
-3. ツールが自動的にApexのインストール先を探して起動を試みます。自動起動しない場合は、手動でSteamやEA Appからゲームを起動してください。
-4. ゲームがクラッシュするか、起動できないのを確認するまでコマンドプロンプトを開いたまま待ちます（最大60秒の監視）。
-5. 診断が終了すると、デスクトップに詳細な診断レポート `Apex_Diagnostic_Report.txt` が生成され、メモ帳で自動的に開きます。
+3. ツールが自動起動を試みます。自動起動しない場合は、手動でSteamやEA Appからゲームを起動してください。
+4. 診断結果レポートがデスクトップ（またはC:\）に書き出されるのを待ちます。
+
+#### 方法2: ターミナルからPowerShellで直接実行する (代替案)
+バッチファイルが一瞬で消えてしまう場合や、セキュリティソフトにブロックされる場合はこちらをお試しください。
+1. 解凍したフォルダを開き、何もない場所を右クリックして**「ターミナルで開く」**（または「ここでPowerShellを開く」）を選択します。
+2. 起動した画面に以下のコマンドをコピー＆ペーストし、`Enter` キーを押します：
+   ```powershell
+   Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PWD\ApexLaunchDebugger.ps1`"" -Verb RunAs
+   ```
+3. 管理者権限で新しいPowerShell画面が起動し、診断が開始されます。
+
+#### 診断時の注意点
+*   **監視時間制限**: ツールは起動後 **60秒間** のみプロセスを監視します。ツールを起動したら、すぐにSteamやEA Appからゲームを起動してください。
+*   ゲームがロゴ画面で落ちたり、メニュー画面に行くまでに落ちた場合、ツールが即座にクラッシュを検知してレポートを作成します。
 
 ---
 

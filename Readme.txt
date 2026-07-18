@@ -12,16 +12,21 @@ generates a report with recommended solutions.
   3. Readme.txt              - This instruction file
 
 --- How to Use ---
-1. Extract (unzip) the downloaded ZIP file first. 
-   Do NOT run it directly inside the ZIP.
+
+[Method 1: Batch File (Standard)]
+1. Extract (unzip) the downloaded ZIP file first. Do NOT run it directly inside the ZIP.
 2. Right-click "ApexLaunchDebugger.bat" and select "Run as Administrator".
-3. Click "Yes" when the User Account Control (UAC) prompt appears.
-4. A command prompt window will open and attempt to launch Apex. 
-   If it doesn't start automatically, launch Apex manually via Steam or EA App.
-5. Wait for the game to crash or fail to start. (Monitoring will last up to 60s).
-6. A detailed report named "Apex_Diagnostic_Report.txt" will be saved to 
-   your Desktop and automatically opened in Notepad.
-7. Follow the recommended actions in the report, or share the report to get help.
+3. Click "Yes" when the UAC prompt appears.
+4. If it doesn't start automatically, launch Apex manually via Steam or EA App.
+5. Wait for the game to crash. A report will be generated.
+
+[Method 2: PowerShell (Alternative - If Method 1 instantly closes)]
+1. Open the extracted folder, right-click an empty space, and select "Open in Terminal".
+2. Paste this command and press Enter:
+   Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PWD\ApexLaunchDebugger.ps1`"" -Verb RunAs
+3. A new administrator PowerShell window will open to start the diagnosis.
+
+*Note*: The tool monitors launches for 60 seconds. Launch the game immediately after starting the tool.
 
 ---------------------------------------------------------------------
 
@@ -35,17 +40,23 @@ generates a report with recommended solutions.
   3. Readme.txt              - この説明ファイル
 
 --- 使い方 ---
+
+【方法1: バッチファイルを使用する (標準)】
 1. ダウンロードしたZIPファイルを必ず解凍（すべて展開）してください。
    ※ZIPファイルの中のまま起動するとエラーになります。
 2. 解凍したフォルダ内にある「ApexLaunchDebugger.bat」を【右クリック】し、
    【管理者として実行】を選択して起動します。
 3. ユーザーアカウント制御 (UAC) 画面が表示されたら、「はい」を押します。
-4. コマンドプロンプトが表示され、自動的に Apex の起動を試みます。
-   自動起動しない場合は、手動で Steam や EA App からゲームを起動してください。
-5. ゲームがエラーで落ちる、または起動しないのを確認するまでお待ちください（最大60秒）。
-6. 診断が終わると、デスクトップに「Apex_Diagnostic_Report.txt」が生成され、
-   メモ帳で自動的に開きます。
-7. レポートに書かれている「推奨アクション」を確認して対処するか、
-   レポートの内容を相談相手に共有してください。
+4. 自動起動しない場合は、手動で Steam や EA App からゲームを起動してください。
+5. 診断レポートが作成されるのを待ちます。
+
+【方法2: ターミナルからPowerShellで実行する (代替案 - バッチがすぐ閉じる場合)】
+1. 解凍したフォルダを開き、何もない場所を右クリックして「ターミナルで開く」を選択します。
+2. 表示された画面に以下のコマンドを貼り付けて Enter キーを押します：
+   Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PWD\ApexLaunchDebugger.ps1`"" -Verb RunAs
+3. 新しいPowerShell画面が管理者権限で起動し、診断が開始されます。
+
+※注意点：監視時間はツール起動後60秒間です。ツールを起動したらすぐにゲームを起動してください。
+ゲームがロゴ画面で落ちたり、メニュー画面に行くまでに落ちた場合、即座に検出されてレポートが開きます。
 
 =====================================================================
